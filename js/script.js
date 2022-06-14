@@ -61,6 +61,9 @@ let bombs = generateRandomBombs(minRange, maxRange, 16)
 // tentativi possibili
 let possibleAttempts = maxRange - 16;
 
+// array vuoto da popolare con i numeri giusti che non sono "bombe"
+let rightNumbers = [];
+
 let game = true;
 
 while(game = true) {
@@ -70,8 +73,14 @@ while(game = true) {
     if (bombsArray.includes(userGame)) {
         game = false;
         alert('HAI PERSO!');
-    // se il numero di volte che l'utente inserisce un numero è uguale al massimo di tentativi possibili --> gioco finito --> messaggio 
-    } else if(userGame === possibleAttempts){
+    
+    // numero dato dall'utente lo pusho nell'array vuoto dei numeri giusti solo se non è già presente nell'array 
+    } else if(!rightNumbers.includes(userGame)){
+        rightNumbers.push(userGame);
+    }
+
+    // se il numero di volte che l'utente inserisce un numero (nell'array vuoto con i numeri giusti), è uguale al massimo di tentativi possibili --> gioco finito --> messaggio 
+    if (rightNumbers.length === possibleAttempts) {
         game = false;
         alert('HAI VINTO!');
     }
