@@ -59,8 +59,7 @@ let bombs = generateRandomBombs(minRange, maxRange, 16)
 
 // finchè il gioco non è finito:
 // tentativi possibili
-// let possibleAttempts = maxRange - 16;
-let possibleAttempts = userRange - 16;
+let possibleAttempts = maxRange - 16;
 
 let game = true;
 
