@@ -16,8 +16,8 @@
 // funzione che genera numeri random (in un range) e li aggiunge ad un array vuoto, solo se il numero generato non è gia presente nell'array
 function generateRandomBombs(minBombRange, maxBombRange, totalBombsNum) {
 
-    // ciclo for che genera un numero random tante volte quanto la lunghezza di "totalBombsNum" e le pusha nell'array vuoto solo se il numero non è già presente
-   for(let i = 0; i < totalBombsNum; i++) {
+    // nel while genero un numero random tante volte quanto la lunghezza di "totalBombsNum" e lo pusho nell'array vuoto solo se il numero non è già presente
+    while(bombsArray.length < totalBombsNum) {
         let randomNumb = getRndInteger(minBombRange, maxBombRange);
 
         if (!bombsArray.includes(randomNumb)) {
@@ -56,5 +56,27 @@ let bombsArray = [];
 
 // utilizzo della funzione che genera le bombe
 let bombs = generateRandomBombs(minRange, maxRange, 16)
+
+// finchè il gioco non è finito:
+// tentativi possibili
+// let possibleAttempts = maxRange - 16;
+let possibleAttempts = userRange - 16;
+
+let game = true;
+
+while(game = true) {
+    let userGame = parseInt(prompt('Inserisci un numero'));
+
+    // se il numero inserito dall'utente è presente nell'array delle "bombe" --> gioco finito --> messaggio 
+    if (bombsArray.includes(userGame)) {
+        game = false;
+        alert('HAI PERSO!');
+    // se il numero di volte che l'utente inserisce un numero è uguale al massimo di tentativi possibili --> gioco finito --> messaggio 
+    } else if(userGame === possibleAttempts){
+        game = false;
+        alert('HAI VINTO!');
+    }
+}
+
 
 
